@@ -73,7 +73,7 @@ const cards = [
 export default function MainPage() {
   return (
     <section id="main">
-      <div className="relative isolate overflow-hidden bg-transparent py-16 ">
+      <div className="relative isolate overflow-hidden bg-transparent py-6 ">
         <div className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl">
           <div
             style={{
@@ -122,7 +122,7 @@ export default function MainPage() {
                 >
                   <div
                     key={card.name}
-                    className="flex min-h-40 gap-x-4 rounded-xl bg-gray-900 p-6 ring-1 ring-inset ring-white/50"
+                    className="flex-col justify-center items-center min-h-60 gap-x-4 rounded-xl bg-gray-900 p-6 ring-1 ring-inset ring-white/50"
                   >
                     <card.icon
                       aria-hidden="true"

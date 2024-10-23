@@ -6,7 +6,7 @@ const tiers = [
   {
     name: "Basic",
     id: "tier-freelancer",
-    href: "#",
+    href: "#email-section",
     price: "699 zł",
     hours: "10h",
     description:
@@ -22,7 +22,7 @@ const tiers = [
   {
     name: "Medium",
     id: "tier-startup",
-    href: "#",
+    href: "#email-section",
     price: "1399 zł",
     hours: "20h",
     description:
@@ -38,7 +38,7 @@ const tiers = [
   {
     name: "Pro",
     id: "tier-enterprise",
-    href: "#",
+    href: "#email-section",
     price: "2099 zł",
     hours: "30h",
     description:
@@ -57,10 +57,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function PricingSection() {
   return (
     <section id="pricing">
-      <div className="bg-transparent p-16 sm:py-16">
+      <div className="bg-transparent p-6 sm:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <BlurFade delay={0.1} inView>
             <div className="mx-auto max-w-4xl text-center">
@@ -76,15 +76,15 @@ export default function Example() {
           </BlurFade>
           <BlurFade delay={0.5} inView>
             <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              {tiers.map((tier) => (
+              {tiers.map((tier, index) => (
                 <motion.div whileHover={{ scale: 1.03 }}>
                   <div
                     key={tier.id}
                     className={classNames(
                       tier.mostPopular
-                        ? "bg-gray-950 ring-1 ring-amber-400 ring-offset-amber-300 "
-                        : " bg-gray-900 ring-1 ring-white",
-                      "rounded-3xl p-8 xl:p-10 min-h-full"
+                        ? "bg-gray-950 ring-1 ring-amber-400 ring-offset-amber-300 hover:bg-black"
+                        : " bg-gray-900 ring-1 ring-white/50",
+                      "rounded-3xl p-8 xl:p-10 min-h-full "
                     )}
                   >
                     <div className="flex items-center justify-between gap-x-4">
@@ -112,25 +112,27 @@ export default function Example() {
                       {tier.description}
                     </p>
                     <p className="mt-6 flex items-baseline gap-x-1">
-                      <span className="text-4xl font-bold tracking-tight text-white">
+                      <span className="text-1xl font-bold tracking-tight text-white lg:text-4xl">
                         {tier.price}
                       </span>
                       <span className="text-sm font-semibold leading-6 text-gray-300">
                         /miesięcznie
                       </span>
                     </p>
-                    <a
-                      href={tier.href}
-                      aria-describedby={tier.id}
-                      className={classNames(
-                        tier.mostPopular
-                          ? "bg-amber-400 text-white shadow-sm bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-500"
-                          : "bg-white/30 text-white hover:bg-white/20 focus-visible:outline-white",
-                        "mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                      )}
-                    >
-                      Zamów
-                    </a>
+                    <motion.div whileHover={{ scale: 1.03 }}>
+                      <a
+                        href={tier.href}
+                        aria-describedby={tier.id}
+                        className={classNames(
+                          tier.mostPopular
+                            ? "bg-amber-400 text-white shadow-sm bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-500"
+                            : "bg-white/30 text-white hover:bg-white/20 focus-visible:outline-white",
+                          "mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                        )}
+                      >
+                        Zamów
+                      </a>
+                    </motion.div>
                     <ul
                       role="list"
                       className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10"

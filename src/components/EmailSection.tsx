@@ -6,7 +6,7 @@ export default function EmailSection() {
       <div className="bg-transparent py-3 ">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <BlurFade delay={0.5} inView>
-            <div className="relative isolate overflow-hidden bg-gray-900/50 px-6 ring-1 ring-white py-24  sm:rounded-3xl sm:px-24 xl:py-32">
+            <div className="relative isolate overflow-hidden bg-gray-900/50 px-6 lg:ring-1 ring-white/50 py-24  sm:rounded-3xl sm:px-24 xl:py-32">
               <h2 className=" p-2 text-4xl font-bold tracking-tight bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-500 bg-clip-text text-transparent sm:text-5xl">
                 Oszczędzaj swój czas juz dziś!
               </h2>

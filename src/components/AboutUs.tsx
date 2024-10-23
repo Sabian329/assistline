@@ -33,7 +33,7 @@ export default function AboutUS() {
     <section id="about-us" className="min-h-screen">
       <div className="relative ">
         <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
-          <div className=" px-6 lg:contents lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+          <div className=" px-10 lg:contents lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
             <div className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
               <img
                 alt=""
@@ -42,7 +42,7 @@ export default function AboutUS() {
               />
             </div>
           </div>
-          <div className="px-6 lg:contents">
+          <div className="px-6 flex  lg:contents  justify-center ">
             <div className="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
               <BlurFade delay={0.1} inView>
                 <p className="text-base font-semibold leading-7 text-amber-400">
@@ -50,7 +50,7 @@ export default function AboutUS() {
                 </p>
               </BlurFade>
               <BlurFade delay={0.1} inView>
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
+                <h1 className="mt-2 text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-500 via-gray-400 to-white bg-clip-text text-transparent sm:text-4xl">
                   Zautomatyzuj swoją pracę z ASSISTLINE
                 </h1>
               </BlurFade>
