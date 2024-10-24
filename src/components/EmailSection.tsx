@@ -1,6 +1,26 @@
+import { useRef } from "react";
 import BlurFade from "./ui/blur-fade";
+import emailjs from "@emailjs/browser";
 
 export default function EmailSection() {
+  const form = useRef<any>();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_kwthxgk", "template_i18yiq8", form.current, {
+        publicKey: "cvKSeclmpJws7aoPn",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
+
   return (
     <section id="email-section">
       <div className="bg-transparent py-3 ">
@@ -14,7 +34,11 @@ export default function EmailSection() {
                 Zostaw swojego maila a my skontakujemy się z Tobą w celu
                 ustalenia szczegółów.
               </p>
-              <form className="mx-auto mt-10 flex max-w-md gap-x-4">
+              <form
+                ref={form}
+                onSubmit={sendEmail}
+                className="mx-auto mt-10 flex max-w-md gap-x-4"
+              >
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
