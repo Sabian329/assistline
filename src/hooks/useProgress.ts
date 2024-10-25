@@ -38,9 +38,15 @@ const initialSteps = [
 ];
 
 export const useProgress = () => {
-  const [progress, setProgress] = useState<null | number>(0);
+  const [progressState, setProgressState] = useState<{
+    progress: number;
+    tier: string;
+  }>({
+    progress: 0,
+    tier: "",
+  });
 
-  const updateStepStatus = (steps, currentStepIndex) => {
+  const updateStepStatus = (steps: StepsState, currentStepIndex: number) => {
     return steps.map((step, index) => {
       if (index < currentStepIndex) {
         return { ...step, status: "complete" };
@@ -51,7 +57,20 @@ export const useProgress = () => {
       }
     });
   };
-  const updatedSteps = updateStepStatus(initialSteps, progress);
+  const updatedSteps = updateStepStatus(initialSteps, progressState.progress);
 
-  return { progress, setProgress, updatedSteps };
+  const setProgress = (progress: number) => {
+    setProgressState((prev) => ({ ...prev, progress }));
+  };
+  const setTier = (tier: string) => {
+    setProgressState((prev) => ({ ...prev, tier }));
+  };
+
+  return {
+    progress: progressState.progress,
+    tier: progressState.tier,
+    setProgress,
+    setTier,
+    updatedSteps,
+  };
 };

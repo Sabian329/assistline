@@ -10,15 +10,17 @@ function classNames(...classes) {
 }
 
 interface EmailSectionProps {
-  setProgress: React.Dispatch<React.SetStateAction<number | null>>;
+  setProgress: (progress: number) => void;
   updatedSteps: StepsState;
   progress: number;
+  tier: string;
 }
 
 export default function EmailSection({
   updatedSteps,
   setProgress,
   progress,
+  tier,
 }: EmailSectionProps) {
   const [emailSuccess, setEmailSuccess] = useState<boolean | null>(null);
   const [email, setEmail] = useState("");
@@ -41,6 +43,7 @@ export default function EmailSection({
 
     const templateParams = {
       email,
+      tier,
     };
 
     emailjs

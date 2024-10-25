@@ -9,15 +9,20 @@ function classNames(...classes) {
 }
 
 interface PricingSectionProps {
-  setProgress: React.Dispatch<React.SetStateAction<number | null>>;
+  setProgress: (progress: number) => void;
+  setTier: (tier: string) => void;
 }
 
-export default function PricingSection({ setProgress }: PricingSectionProps) {
+export default function PricingSection({
+  setProgress,
+  setTier,
+}: PricingSectionProps) {
   const [selected, setSelected] = useState<null | number>(null);
 
-  const handleSelectItem = (id: number) => {
+  const handleSelectItem = (id: number, tier: string) => {
     setProgress(1);
     setSelected(id);
+    setTier(tier);
   };
 
   return (
@@ -99,7 +104,7 @@ export default function PricingSection({ setProgress }: PricingSectionProps) {
                       whileTap={{ scale: 1.1 }}
                     >
                       <button
-                        onClick={() => handleSelectItem(tier.id)}
+                        onClick={() => handleSelectItem(tier.id, tier.name)}
                         className={classNames(
                           selected === tier.id
                             ? '"bg-amber-400 text-white shadow-sm bg-gradient-to-r from-green-400 via-green-300 to-green-500'

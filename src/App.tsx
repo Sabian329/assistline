@@ -10,7 +10,7 @@ import BlurFade from "./components/ui/blur-fade";
 import { useProgress } from "./hooks/useProgress";
 
 function App() {
-  const { progress, setProgress, updatedSteps } = useProgress();
+  const { progress, setProgress, updatedSteps, setTier, tier } = useProgress();
 
   return (
     <div
@@ -22,11 +22,11 @@ function App() {
           ASSIST<strong className="font-thin">LINE.</strong>
         </h2>
       </BlurFade>
-      <MainPage id="main" />
-      <AboutUs id="about-us" />
-      <PricingSection setProgress={setProgress} id="pricing" />
+      <MainPage />
+      <AboutUs />
+      <PricingSection setTier={setTier} setProgress={setProgress} />
       <EmailSection
-        id="email-section"
+        tier={tier}
         updatedSteps={updatedSteps}
         setProgress={setProgress}
         progress={progress}
