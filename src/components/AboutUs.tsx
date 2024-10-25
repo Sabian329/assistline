@@ -21,7 +21,7 @@ const aboutUs = {
     },
     {
       icon: CalendarIcon,
-      title: "Zarządzanie kalendarzem i harmonogramem.",
+      title: "Zarządzanie kalendarzem i harmonogramem",
       description:
         "Pomagamy w organizacji spotkań, terminów i harmonogramów, abyś mógł efektywnie zarządzać swoim czasem i zadaniami.",
     },
