@@ -21,7 +21,7 @@ const aboutUs = {
     },
     {
       icon: CalendarIcon,
-      title: "Zarządzanie kalendarzem i harmonogramem",
+      title: "Zarządzanie kalendarzem i harmonogramem.",
       description:
         "Pomagamy w organizacji spotkań, terminów i harmonogramów, abyś mógł efektywnie zarządzać swoim czasem i zadaniami.",
     },
@@ -74,8 +74,8 @@ export default function AboutUS() {
                   </p>
                 </BlurFade>
                 <ul role="list" className="mt-8 space-y-8 text-gray-200">
-                  {aboutUs.points.map((item) => (
-                    <BlurFade delay={0.1} inView>
+                  {aboutUs.points.map((item, index) => (
+                    <BlurFade key={item.title} delay={0.1} inView>
                       <li className="flex gap-x-3">
                         <item.icon
                           aria-hidden="true"

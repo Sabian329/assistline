@@ -1,74 +1,6 @@
-import {
-  CalendarIcon,
-  LifebuoyIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  UserGroupIcon,
-  MagnifyingGlassIcon,
-  ShareIcon,
-  ChartBarIcon,
-  DocumentIcon,
-} from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
 import BlurFade from "./ui/blur-fade";
-import group from "../assets/Group.svg";
-
-const cards = [
-  {
-    name: "Obsługa Klienta",
-    description:
-      "Profesjonalne wsparcie w obsłudze telefonów, maili i zapytań klientów, aby Twoja firma mogła skupić się na rozwoju.",
-    icon: PhoneIcon,
-  },
-  {
-    name: "Wsparcie Techniczne",
-    description:
-      "Pomagamy rozwiązywać techniczne problemy, dbając o płynne funkcjonowanie Twojej firmy i jej systemów.",
-    icon: LifebuoyIcon,
-  },
-  {
-    name: "Zapytania Medialne",
-    description:
-      "Zajmujemy się komunikacją z mediami oraz zarządzaniem informacjami prasowymi, by wzmocnić wizerunek Twojej marki.",
-    icon: NewspaperIcon,
-  },
-  {
-    name: "Zarządzanie Kalendarzem",
-    description:
-      "Pomagamy w organizacji spotkań, terminów i harmonogramów, abyś mógł efektywnie zarządzać swoim czasem.",
-    icon: CalendarIcon, // Zamień na odpowiednią ikonę
-  },
-  {
-    name: "Zarządzanie Dokumentacją",
-    description:
-      "Dbamy o porządek i organizację dokumentacji firmowej, w tym umów, raportów oraz pism administracyjnych.",
-    icon: DocumentIcon, // Zamień na odpowiednią ikonę
-  },
-  {
-    name: "Wsparcie w Rekrutacji",
-    description:
-      "Pomagamy w procesie rekrutacji – od przeglądania CV, przez wstępną weryfikację po organizowanie rozmów kwalifikacyjnych.",
-    icon: UserGroupIcon, // Zamień na odpowiednią ikonę
-  },
-  {
-    name: "Research Rynkowy",
-    description:
-      "Przeprowadzamy dokładne badania rynkowe, aby dostarczyć Ci aktualnych danych potrzebnych do podejmowania decyzji biznesowych.",
-    icon: MagnifyingGlassIcon, // Zamień na odpowiednią ikonę
-  },
-  {
-    name: "Zarządzanie Social Media",
-    description:
-      "Prowadzimy Twoje konta w mediach społecznościowych, zajmując się treściami, publikacjami i interakcją z klientami.",
-    icon: ShareIcon, // Zamień na odpowiednią ikonę
-  },
-  {
-    name: "Tworzenie Raportów",
-    description:
-      "Generujemy szczegółowe raporty, które pomogą Ci śledzić postępy w pracy i podejmować świadome decyzje biznesowe.",
-    icon: ChartBarIcon, // Zamień na odpowiednią ikonę
-  },
-];
+import { mainCards } from "../model";
 
 export default function MainPage() {
   return (
@@ -114,16 +46,13 @@ export default function MainPage() {
           </div>
 
           <div className="mx-auto mt-16 grid min-h-60 max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-            {cards.map((card, index) => (
-              <BlurFade delay={0.1 + index * 0.2} inView>
+            {mainCards.map((card, index) => (
+              <BlurFade key={card.name} delay={0.1 + index * 0.2} inView>
                 <motion.div
                   whileTap={{ scale: 1.05 }}
                   whileHover={{ scale: 1.03 }}
                 >
-                  <div
-                    key={card.name}
-                    className="flex-col justify-center items-center min-h-60 gap-x-4 rounded-xl bg-gray-900 p-6 ring-1 ring-inset ring-white/50"
-                  >
+                  <div className="flex-col justify-center items-center min-h-60 gap-x-4 rounded-xl bg-gray-900 p-6 ring-1 ring-inset ring-white/50">
                     <card.icon
                       aria-hidden="true"
                       className="h-7 w-5 flex-none text-amber-400"

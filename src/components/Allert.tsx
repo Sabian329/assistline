@@ -12,6 +12,8 @@ export default function Allert({
   state: { message: string; sucess: boolean | null };
   handleClose: () => void;
 }) {
+  state.sucess !== null && setTimeout(() => handleClose(), 5000);
+
   return (
     <>
       <div

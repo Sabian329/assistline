@@ -7,8 +7,11 @@ import PricingSection from "./components/PricingSection";
 import Faq from "./components/Faq";
 import group from "./assets/bc.svg";
 import BlurFade from "./components/ui/blur-fade";
+import { useProgress } from "./hooks/useProgress";
 
 function App() {
+  const { progress, setProgress, updatedSteps } = useProgress();
+
   return (
     <div
       className="absolute top-0 left-0 right-0 min-h-screen bg-cover bg-center lg:bg-cover"
@@ -21,8 +24,13 @@ function App() {
       </BlurFade>
       <MainPage id="main" />
       <AboutUs id="about-us" />
-      <PricingSection id="pricing" />
-      <EmailSection id="email-section" />
+      <PricingSection setProgress={setProgress} id="pricing" />
+      <EmailSection
+        id="email-section"
+        updatedSteps={updatedSteps}
+        setProgress={setProgress}
+        progress={progress}
+      />
       <Faq id="faq" />
       <Footer />
     </div>

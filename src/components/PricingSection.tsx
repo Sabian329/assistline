@@ -1,63 +1,25 @@
-import { CheckIcon } from "@heroicons/react/20/solid";
+import { CheckCircleIcon, CheckIcon } from "@heroicons/react/20/solid";
 import BlurFade from "./ui/blur-fade";
 import { motion } from "framer-motion";
-
-const tiers = [
-  {
-    name: "Basic",
-    id: "tier-freelancer",
-    href: "#email-section",
-    price: "699 zł",
-    hours: "10h",
-    description:
-      "Idealny dla freelancerów, którzy potrzebują wsparcia w organizacji zadań administracyjnych i zarządzaniu dokumentacją.",
-    features: [
-      "Profesjonalna obsługa administracyjna",
-      "Zarządzanie dokumentami i plikami",
-      "Wsparcie w organizacji harmonogramów",
-      "Pomoc w zarządzaniu komunikacją e-mailową",
-    ],
-    mostPopular: false,
-  },
-  {
-    name: "Medium",
-    id: "tier-startup",
-    href: "#email-section",
-    price: "1399 zł",
-    hours: "20h",
-    description:
-      "Skierowany do dynamicznie rozwijających się firm, które potrzebują zaawansowanej pomocy administracyjnej i automatyzacji procesów.",
-    features: [
-      "Zarządzanie większą liczbą projektów",
-      "Automatyzacja zadań administracyjnych",
-      "Wsparcie w prowadzeniu mediów społecznościowych",
-      "Zaawansowane narzędzia do analizy działań",
-    ],
-    mostPopular: true,
-  },
-  {
-    name: "Pro",
-    id: "tier-enterprise",
-    href: "#email-section",
-    price: "2099 zł",
-    hours: "30h",
-    description:
-      "Kompleksowe wsparcie dla dużych firm, obejmujące pełną automatyzację procesów oraz dedykowane narzędzia do zarządzania na poziomie korporacyjnym.",
-    features: [
-      "Dedykowany zespół wsparcia",
-      "Nieograniczone zarządzanie projektami i dokumentacją",
-      "Automatyzacja procesów HR, marketingu i finansów",
-      "Narzędzia do tworzenia niestandardowych raportów i analiz",
-    ],
-    mostPopular: false,
-  },
-];
+import { pricingTiers } from "../model";
+import { useState } from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function PricingSection() {
+interface PricingSectionProps {
+  setProgress: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+export default function PricingSection({ setProgress }: PricingSectionProps) {
+  const [selected, setSelected] = useState<null | number>(null);
+
+  const handleSelectItem = (id: number) => {
+    setProgress(1);
+    setSelected(id);
+  };
+
   return (
     <section id="pricing">
       <div className="bg-transparent p-6 sm:py-16">
@@ -76,34 +38,47 @@ export default function PricingSection() {
           </BlurFade>
           <BlurFade delay={0.5} inView>
             <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              {tiers.map((tier, index) => (
-                <motion.div whileHover={{ scale: 1.03 }}>
+              {pricingTiers.map((tier, index) => (
+                <motion.div key={tier.id} whileHover={{ scale: 1.03 }}>
                   <div
-                    key={tier.id}
                     className={classNames(
-                      tier.mostPopular
-                        ? "bg-gray-950 ring-1 ring-amber-400 ring-offset-amber-300 hover:bg-black"
-                        : " bg-gray-900 ring-1 ring-white/50",
+                      selected === tier.id
+                        ? "bg-gray-950 ring-1 ring-green-400 ring-offset-green-300 "
+                        : tier.mostPopular
+                        ? "bg-gray-800 ring-1 ring-amber-400 ring-offset-amber-300 hover:bg-black"
+                        : " bg-gray-800 ring-1 ring-white/50",
                       "rounded-3xl p-8 xl:p-10 min-h-full "
                     )}
                   >
                     <div className="flex items-center justify-between gap-x-4">
                       <div className="flex gap-2">
                         <h3
-                          id={tier.id}
+                          id={String(tier.id)}
                           className="text-lg font-semibold leading-8 text-white"
                         >
                           {tier.name}
                         </h3>
                         <h3
-                          id={tier.id}
+                          id={String(tier.id)}
                           className="text-lg font-semibold leading-8 text-white "
                         >
                           {tier.hours}
                         </h3>
+                        {selected === tier.id && (
+                          <CheckCircleIcon
+                            aria-hidden="true"
+                            className="h-6 w-6 text-green-400"
+                          />
+                        )}
                       </div>
                       {tier.mostPopular ? (
-                        <p className="rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-500 px-2.5 py-1 text-xs font-semibold leading-5 text-white">
+                        <p
+                          className={classNames(
+                            selected === tier.id
+                              ? "rounded-full bg-gradient-to-r from-green-400 via-green-300 to-green-500 px-2.5 py-1 text-xs font-semibold leading-5 text-white"
+                              : "rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-500 px-2.5 py-1 text-xs font-semibold leading-5 text-white"
+                          )}
+                        >
                           Most popular
                         </p>
                       ) : null}
@@ -119,19 +94,23 @@ export default function PricingSection() {
                         /miesięcznie
                       </span>
                     </p>
-                    <motion.div whileHover={{ scale: 1.03 }}>
-                      <a
-                        href={tier.href}
-                        aria-describedby={tier.id}
+                    <motion.div
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 1.1 }}
+                    >
+                      <button
+                        onClick={() => handleSelectItem(tier.id)}
                         className={classNames(
-                          tier.mostPopular
+                          selected === tier.id
+                            ? '"bg-amber-400 text-white shadow-sm bg-gradient-to-r from-green-400 via-green-300 to-green-500'
+                            : tier.mostPopular
                             ? "bg-amber-400 text-white shadow-sm bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-500"
                             : "bg-white/30 text-white hover:bg-white/20 focus-visible:outline-white",
-                          "mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                          " w-full mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                         )}
                       >
-                        Zamów
-                      </a>
+                        {selected === tier.id ? "Przejdź dalej" : "Zamów"}
+                      </button>
                     </motion.div>
                     <ul
                       role="list"
@@ -145,7 +124,9 @@ export default function PricingSection() {
                           <CheckIcon
                             aria-hidden="true"
                             className={classNames(
-                              tier.mostPopular
+                              selected === tier.id
+                                ? "h-6 w-5 flex-none text-green-400"
+                                : tier.mostPopular
                                 ? "h-6 w-5 flex-none text-amber-400"
                                 : "h-6 w-5 flex-none text-white"
                             )}
