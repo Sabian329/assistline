@@ -19,36 +19,34 @@ export default function Faq() {
             </h2>
             <dl className="mt-10 space-y-6 divide-y divide-white/10">
               {faqs.map((faq, index) => (
-                <BlurFade key={faq.question} delay={0.1 + index * 0.1} inView>
-                  <Disclosure as="div" className="pt-6">
-                    <dt>
-                      <DisclosureButton className="group flex w-full items-start justify-between text-left text-white">
-                        <motion.span
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 1.05 }}
-                          className="text-base font-semibold leading-7"
-                        >
-                          {faq.question}
-                        </motion.span>
-                        <span className="ml-6 flex h-7 items-center">
-                          <PlusSmallIcon
-                            aria-hidden="true"
-                            className="h-6 w-6 group-data-[open]:hidden text-amber-400"
-                          />
-                          <MinusSmallIcon
-                            aria-hidden="true"
-                            className="h-6 w-6 [.group:not([data-open])_&]:hidden text-amber-400"
-                          />
-                        </span>
-                      </DisclosureButton>
-                    </dt>
-                    <DisclosurePanel as="dd" className="mt-2 pr-12">
-                      <p className="text-base text-left leading-7 text-gray-300">
-                        {faq.answer}
-                      </p>
-                    </DisclosurePanel>
-                  </Disclosure>
-                </BlurFade>
+                <Disclosure as="div" className="pt-6">
+                  <dt>
+                    <DisclosureButton className="group flex w-full items-start justify-between text-left text-white">
+                      <motion.span
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 1.05 }}
+                        className="text-base font-semibold leading-7"
+                      >
+                        {faq.question}
+                      </motion.span>
+                      <span className="ml-6 flex h-7 items-center">
+                        <PlusSmallIcon
+                          aria-hidden="true"
+                          className="h-6 w-6 group-data-[open]:hidden text-amber-400"
+                        />
+                        <MinusSmallIcon
+                          aria-hidden="true"
+                          className="h-6 w-6 [.group:not([data-open])_&]:hidden text-amber-400"
+                        />
+                      </span>
+                    </DisclosureButton>
+                  </dt>
+                  <DisclosurePanel as="dd" className="mt-2 pr-12">
+                    <p className="text-base text-left leading-7 text-gray-300">
+                      {faq.answer}
+                    </p>
+                  </DisclosurePanel>
+                </Disclosure>
               ))}
             </dl>
           </div>

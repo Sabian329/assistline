@@ -31,10 +31,10 @@ const aboutUs = {
 export default function AboutUS() {
   return (
     <section id="about-us" className="min-h-screen">
-      <div className="relative ">
-        <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
-          <div className=" px-10 lg:contents lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
-            <div className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+      <div className="relative">
+        <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end ">
+          <div className="px-10 lg:contents lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+            <div className="relative h-80 lg:-ml-8 lg:h-auto lg:my-32 lg:w-full lg:grow xl:ml-0">
               <img
                 alt=""
                 src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=2560&h=3413&&q=80"

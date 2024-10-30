@@ -27,7 +27,7 @@ export default function PricingSection({
 
   return (
     <section id="pricing">
-      <div className="bg-transparent p-6 sm:py-16">
+      <div className="bg-transparent p-6 sm:py-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <BlurFade delay={0.1} inView>
             <div className="mx-auto max-w-4xl text-center">

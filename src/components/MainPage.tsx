@@ -47,23 +47,21 @@ export default function MainPage() {
 
           <div className="mx-auto mt-16 grid min-h-60 max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
             {mainCards.map((card, index) => (
-              <BlurFade key={card.name} delay={0.1 + index * 0.2} inView>
-                <motion.div
-                  whileTap={{ scale: 1.05 }}
-                  whileHover={{ scale: 1.03 }}
-                >
-                  <div className="flex-col justify-center items-center min-h-60 gap-x-4 rounded-xl bg-gray-900 p-6 ring-1 ring-inset ring-white/50">
-                    <card.icon
-                      aria-hidden="true"
-                      className="h-7 w-5 flex-none text-amber-400"
-                    />
-                    <div className="text-base leading-7">
-                      <h3 className="font-semibold text-white">{card.name}</h3>
-                      <p className="mt-2 text-gray-300">{card.description}</p>
-                    </div>
+              <motion.div
+                whileTap={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
+              >
+                <div className="flex-col justify-center items-center min-h-60 gap-x-4 rounded-xl bg-gray-900 p-6 ring-1 ring-inset ring-white/50">
+                  <card.icon
+                    aria-hidden="true"
+                    className="h-7 w-5 flex-none text-amber-400"
+                  />
+                  <div className="text-base leading-7">
+                    <h3 className="font-semibold text-white">{card.name}</h3>
+                    <p className="mt-2 text-gray-300">{card.description}</p>
                   </div>
-                </motion.div>
-              </BlurFade>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -8,6 +8,7 @@ import Faq from "./components/Faq";
 import group from "./assets/bc.svg";
 import BlurFade from "./components/ui/blur-fade";
 import { useProgress } from "./hooks/useProgress";
+import AboutUs2 from "./components/AboutUs2";
 
 function App() {
   const { progress, setProgress, updatedSteps, setTier, tier } = useProgress();
