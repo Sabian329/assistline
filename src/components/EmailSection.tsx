@@ -23,6 +23,7 @@ export default function EmailSection({
   tier,
 }: EmailSectionProps) {
   const [emailSuccess, setEmailSuccess] = useState<boolean | null>(null);
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [allert, setAllert] = useState<{
     message: string;
@@ -40,6 +41,7 @@ export default function EmailSection({
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const templateParams = {
       email,
@@ -62,15 +64,17 @@ export default function EmailSection({
           setEmailSuccess(true);
           setEmail("");
           setProgress(3);
+          setLoading(false);
         },
         () => {
           setAllert({ message: "Coś poszlo nie tak", sucess: false });
           setEmailSuccess(false);
+          setLoading(false);
         }
       );
   };
 
-  const buttonDiabled = !!emailSuccess || progress !== 2;
+  const buttonDiabled = !!emailSuccess || progress !== 2 || loading;
 
   return (
     <section id="email-section">
